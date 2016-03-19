@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Express React</title>
+    <meta name="description" content="Boilerplate for React with Express.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <% if (env === 'production') { %>
+      <script async src="/main.min.js"></script>
+    <% } else { %>
+      <script src="/main.js"></script>
+    <% } %>
+  </body>
+</html>

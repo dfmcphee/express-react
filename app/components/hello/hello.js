@@ -21,6 +21,6 @@ export default class Hello extends React.Component {
   render() {
     return (
       <h1 className={styles.hello}>{this.state.message}</h1>
-    )
+    );
   }
 }

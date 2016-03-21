@@ -6,17 +6,13 @@
     <title>Express React</title>
     <meta name="description" content="Boilerplate for React with Express.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <% if (env === 'production') { %>
-      <link rel="stylesheet" type="text/css" href="/main.min.css">
+    <% if (styles) { %>
+      <link rel="stylesheet" type="text/css" href="<%= styles %>">
     <% } %>
   </head>
   <body>
     <div id="root"></div>
 
-    <% if (env === 'production') { %>
-      <script async src="/main.min.js"></script>
-    <% } else { %>
-      <script src="/main.js"></script>
-    <% } %>
+    <script async src="<%= script %>"></script>
   </body>
 </html>

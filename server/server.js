@@ -1,13 +1,14 @@
 const express = require('express');
-const isDeveloping = process.env.NODE_ENV !== 'production';
+const routes = require('./routes');
+const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT ? process.env.PORT : 3000;
 const app = express();
 
-if (isDeveloping) {
+if (!isProduction) {
   const webpack = require('webpack');
   const webpackMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('./webpack.config.js');
+  const config = require('../webpack.config.js');
 
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
@@ -32,17 +33,9 @@ if (isDeveloping) {
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
-app.get('/', function indexRequest(req, res) {
-  res.render('index', {
-    env: process.env.NODE_ENV
-  });
-});
+app.use('/', routes);
 
-app.get('/message.json', function messageRequest(req, res) {
-  res.send({message: 'Hello world'});
-});
-
-app.listen(port, '0.0.0.0', function onStart(err) {
+app.listen(port, '0.0.0.0', function(err) {
   if (err) {
     console.log(err);
   }

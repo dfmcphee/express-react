@@ -1,9 +1,9 @@
 const assert = require('assert');
 const fetchMock = require('fetch-mock');
 
-const React = require('react/addons');
+const React = require('react');
 const Hello = require('../../../app/components/hello/hello.js').default;
-const TestUtils = React.addons.TestUtils;
+const TestUtils = require('react-addons-test-utils');
 
 describe('Hello component', function() {
   before('setup', function() {

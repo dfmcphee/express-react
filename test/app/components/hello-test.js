@@ -7,7 +7,7 @@ const TestUtils = require('react-addons-test-utils');
 
 describe('Hello component', function() {
   before('setup', function() {
-    fetchMock.mock('/message.json', 'GET', {
+    fetchMock.get('/message.json', {
       message: 'Hello world'
     });
 
